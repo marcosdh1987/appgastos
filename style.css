@@ -1,20 +1,18 @@
-.flex-conteiner {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.flex-conteiner > div {
-  width: 100;
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.flex-item {
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    background-color: DodgerBlue;
+  }
+  
+  .flex-container > div {
+    background-color: #f1f1f1;
+    width: 100;
+    margin: 10px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 20px;
+  }
+  .flex-item   {
     width: 10;
-    background-color: antiquewhite;
-}
+    background-color: #f1f1f1;
+  }

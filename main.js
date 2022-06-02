@@ -2,6 +2,7 @@ var nombres = [];
 var montos = [];
 var total = 0;
 
+
 function Calcular(){
     total = 0;
     apagar = 0;
@@ -19,20 +20,41 @@ function Calcular(){
 
 }
 
+function Agregar(nombre, monto){
+    //monto = parseFloat(monto);
+    console.log(monto);
+    if (monto == "" || nombre == "") {
+        alert("Ingrese todos los datos");
+    }
+    else{
+        AgregarNuevo(nombre, monto);
+    }
+}
+
 function AgregarNuevo(nombre, monto){
     nombres.push(nombre);
     montos.push(monto);
     Imprimir();
     Calcular();
+    document.getElementById("nombre").value = "";
+    document.getElementById("monto").value = "";
 }
 
 function BorrarUno(){
     let name = prompt("Ingrese nombre a borrar");
+    if (name == ""){
+        alert("Ingrese nombre");
+    }
+    else{
     let indice = nombres.indexOf(name);
+    if (indice == -1){
+        alert("No hay mas datos para borrar");
+    }else{
     nombres.splice(indice, 1);
     montos.splice(indice,1);
     Imprimir();
     Calcular();
+    }}
 }
 
 function Imprimir(){
