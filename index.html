@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Gastos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="main.js">
+    </script> 
+    <h2> Aplicacion para dividir gastos</h2>
+
+    <div class="flex-conteiner">
+            <h2>Ingresar nombre y gasto</h2>
+    </div>
+    <div class="flex-conteiner">
+        <input type="text" id="nombre" placeholder="Nombre">
+        <input type="number" id="monto">
+        <button id="btn-add" onclick="AgregarNuevo(nombre.value, monto.value)">Agregar</button>
+    </div>
+    <div class="flex-conteiner" id="datos">
+    </div>
+    <div class="flex-conteiner" id="total">
+    </div>
+    
+    <div class="flex-conteiner" id="borrar">
+        <button onclick="BorrarUno()">Borrar Uno</button>
+    </div>
+</body>
+</html>
