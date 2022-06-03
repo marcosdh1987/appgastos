@@ -14,19 +14,30 @@
 
     <div class="flex-container">
         <div class="flex-item">
-            <h2>Ingresar nombre y gasto</h2>
+            <h2>Ingresar detalle y gasto</h2>
         </div>
     </div>
     <div class="flex-container">
-        <input type="text" id="nombre" placeholder="Nombre">
-        <input type="number" id="monto">
+        <input type="text" id="nombre" placeholder="Detalle">
+        <input type="number" id="monto" placeholder="Cantidad">
         <button id="btn-add" onclick="Agregar(nombre.value, monto.value)">Agregar</button>
     </div>
     <div class="flex-container" id="datos">
     </div>
     <div class="flex-container" id="total">
     </div>
+    <div class="flex-container">
+    <div class="flex-item">
+        Ingresar la cantidad de personas con las que compartir el gasto: 
+    </div>
     
+    <input type="number" id="cantidad" placeholder="Dividido entre:">
+    <button id="btn-add" onclick="Recalcular(cantidad.value)">Recalcular</button>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item">
+            </div>
+    </div>
     <div class="flex-container" id="borrar">
         <button onclick="BorrarUno()">Borrar Uno</button>
     </div>

@@ -1,7 +1,6 @@
-var nombres = [];
-var montos = [];
+var nombres = ["Hosteria (Marcos)", "Hotel (Marcos)"];
+var montos = [4500, 9000];
 var total = 0;
-
 
 function Calcular(){
     total = 0;
@@ -14,7 +13,25 @@ function Calcular(){
     totalM.innerHTML = `
     <div class="flex-item">
     <p> El total gastado fue: ${total} </p>
+    </div>    
+    `;
+    document.getElementById("cantidad").value = 1;
+
+}
+
+function Recalcular(cantidad){
+    total = 0;
+    apagar = 0;
+    for(let i=0; i < montos.length; i++){
+        total += parseFloat(montos[i]);
+    }
+    apagar = parseFloat(total/cantidad).toFixed(2);
+    var totalM = document.getElementById("total");
+    totalM.innerHTML = `
+    <div class="flex-item">
+    <p> El total gastado fue: ${total} </p>
     <p>Cada uno debe pagar: ${apagar}</p>
+    <p>Dividiendo entre: ${cantidad} personas</p>
     </div>    
     `;
 
