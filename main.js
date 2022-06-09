@@ -1,6 +1,7 @@
-var nombres = ["Hosteria (Marcos)", "Hotel (Marcos)"];
-var montos = [4500, 9000];
+var nombres = [];
+var montos = [];
 var total = 0;
+var restante = [];
 
 function Calcular(){
     total = 0;
@@ -26,15 +27,30 @@ function Recalcular(cantidad){
         total += parseFloat(montos[i]);
     }
     apagar = parseFloat(total/cantidad).toFixed(2);
+    for(let i=0; i < montos.length; i++){
+        restante[i] = parseFloat(apagar - montos[i]).toFixed(2);
+        console.log(restante[i]);
+    }
     var totalM = document.getElementById("total");
     totalM.innerHTML = `
     <div class="flex-item">
     <p> El total gastado fue: ${total} </p>
-    <p>Cada uno debe pagar: ${apagar}</p>
     <p>Dividiendo entre: ${cantidad} personas</p>
+    <p>Cada uno debe pagar: ${apagar}</p>
     </div>    
     `;
 
+    var detalle = document.getElementById("detalle");
+    detalle.innerHTML = "";
+
+    for (let i = 0; i < restante.length; i++){
+        console.log(restante[i]);
+        console.log(nombres[i]);
+        detalle.innerHTML += `
+        <div class="flex-item">
+        <p>${nombres[i]} le queda pagar: ${restante[i]}</p>
+        </div>
+        `;}
 }
 
 function Agregar(nombre, monto){
@@ -86,3 +102,27 @@ function Imprimir(){
     }
 }
 
+function Descargar() {
+    let datos = [];
+    for (let i = 0; i < montos.length; i++){
+        datos.push({"nombre":nombres[i] ,"monto":montos[i]});
+    };
+    let json = JSON.stringify(datos);
+    let blob = new Blob([json], {type: "application/json"});
+    let url = URL.createObjectURL(blob);
+    let link = document.createElement("a");
+    link.href = url;
+    link.download = "datos.json";
+    link.click();
+}
+
+function Leer() {
+    //let input = document.getElementById("info");
+    fetch("datos.json")
+        .then(response => response.json())
+        .then(data => {
+            for (let i = 0; i < data.length; i++){
+                AgregarNuevo(data[i].nombre, data[i].monto);
+            }
+            });
+}
