@@ -3,6 +3,22 @@ var montos = [];
 var total = 0;
 var restante = [];
 
+const mensaje = function() {  
+    console.log("Este mensaje se muestra después de 3 segundos");
+}
+ 
+setTimeout(mensaje, 3000);
+
+setTimeout(function() {  
+    console.log("Este mensaje se muestra después de 6 segundos");
+}, 6000);
+
+setTimeout(() => { 
+    console.log("Este mensaje se muestra después de 3 segundos");
+}, 9000);
+
+
+
 function Calcular(){
     total = 0;
     apagar = 0;
@@ -126,3 +142,33 @@ function Leer() {
             }
             });
 }
+
+
+// document.querySelector("#callback-btn-1")
+//     .addEventListener("click", function() {    
+//       console.log("El usuario ha hecho clic en el botón.");
+// }, {once: true});
+
+// document.querySelector("#callback-btn-1")
+//     .addEventListener("click", uploadFile(), {once: true});
+
+
+function uploadFile(){
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.click();
+    input.onchange = function(e) {
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var contents = e.target.result;
+            var json = JSON.parse(contents);
+            for (let i = 0; i < json.length; i++){
+                AgregarNuevo(json[i].nombre, json[i].monto);
+            }
+        }
+        reader.readAsText(file);
+    }
+}
+
+
